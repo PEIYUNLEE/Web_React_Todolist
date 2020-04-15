@@ -20,21 +20,6 @@ export default function todos(state = [], action) {
                 ...state.slice(action.idx + 1)
             ];
             break;
-        case types.DELETE_TASK:
-            return [
-                ...state.slice(0, action.idx),
-                ...state.slice(action.idx + 1)
-            ];
-            break;
-        case types.TOGGLE_TASK:
-            return [
-                ...state.slice(0, action.idx),
-                Object.assign({}, state[action.idx], {
-                    isCompleted: !state[action.idx].isCompleted
-                }),
-                ...state.slice(action.idx + 1)
-            ];
-            break;
         default:
             return state;
             break;

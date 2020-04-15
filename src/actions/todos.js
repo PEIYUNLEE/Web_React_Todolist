@@ -1,31 +1,26 @@
 import * as types from '../constants/ActionTypes';
 
 // action creator
-export function addTask(task){
+export function addTask(task,estimateTomo){
     return {
         type: types.ADD_TASK,
-        task
+        task,
+        estimateTomo,
     };
 }
 
-export function editTask(idx, task){
+export function editTask(idx, task,estimateTomo){
     return {
         type: types.EDIT_TASK,
         idx,
-        task
+        task,
+        estimateTomo,
     };
 }
 
-export function deleteTask(idx){
+export function archiveTask(idx){
     return {
-        type: types.DELETE_TASK,
-        idx
-    };
-}
-
-export function toggleTask(idx){
-    return {
-        type: types.TOGGLE_TASK,
+        type: types.ARCHIVE_TASK,
         idx
     };
 }

@@ -23,28 +23,24 @@ class TodoList extends Component {
   }
 
   renderItems() {
-    const filter = this.props.filter;
     const todos = this.props.todos;
-    const { saveTask, deleteTask, completeTask } = this.props;
+    const {saveTask} = this.props;
+    // const { saveTask, deleteTask, completeTask } = this.props;
 
     let list = [];
-    todos.forEach((todo, idx) => {
-      if (
-        filter == "SHOW_ALL" ||
-        (filter === "SHOW_COMPLETED" && todo.isCompleted) ||
-        (filter === "SHOW_UNCOMPLETED" && !todo.isCompleted)
-      ) {
-        list.push(
-          <TodoItem
-            key={idx}
-            index={idx}
-            todo={todo}
-            saveTask={saveTask}
-            deleteTask={deleteTask}
-            completeTask={completeTask}
-          />
-        );
-      }
+    todos.forEach((todo, idx,estimateTomo) => {
+      list.push(
+        <TodoItem
+          key={idx}
+          idx={idx}
+          todo={todo}
+          estimateTomo={estimateTomo}
+          saveTask={saveTask}
+        />
+      );
+      
+      // deleteTask={deleteTask}
+      // completeTask={completeTask}
     });
     return list;
   }

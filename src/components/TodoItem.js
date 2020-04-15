@@ -6,30 +6,27 @@ class TodoItem extends Component {
 
         this.state = {
             isEditing:false,
+            editTomo:0
         }
 
         this.onEditClick = this.onEditClick.bind(this);
-        this.onSaveClick = this.onSaveClick.bind(this);  
-        this.onCancelClick = this.onCancelClick.bind(this);       
+        this.onSaveClick = this.onSaveClick.bind(this);
+        this.onArchiveClick = this.onArchiveClick.bind(this);      
     }
 
     render() {
-        const todo = this.props.todo;
+        const {todo,estimateTomo} = this.props;
         const idx = this.props.index;
         const {deleteTask,completeTask} = this.props;
 
-        const taskStyle = {
-            color: todo.isCompleted ? '#888' : '#000',
-            textDecoration: todo.isCompleted ? 'line-through' : ''
-        };
 
         if(this.state.isEditing){
             return (
                 <tr>
                     <td><input type="text" data-idx={idx} defaultValue={todo.task} ref="editInput"/></td>
                     <td>
+                    <button onClick={this.onArchiveClick}>Archive</button>
                     <button onClick={this.onSaveClick}>Save</button>
-                    <button onClick={this.onCancelClick}>Cancel</button>
                     </td>
                 </tr>
             );
@@ -37,10 +34,9 @@ class TodoItem extends Component {
 
         return (
             <tr>
-                <td><span style={taskStyle} onClick={() => completeTask(idx)}>{todo.task}</span></td>
+                <td>{todo.task}</td>
                 <td>
                     <button onClick={this.onEditClick}>Edit</button>
-                    <button onClick={() => deleteTask(idx)}>Delete</button>
                 </td>
             </tr>
         );
@@ -50,13 +46,13 @@ class TodoItem extends Component {
         this.setState({isEditing:true})
     }
 
-    onCancelClick(){
-        this.setState({isEditing:false})
+    onArchiveClick(){
     }
 
     onSaveClick(){
-        const input = this.refs.editInput;
-        this.props.saveTask(+input.getAttribute('data-idx'),input.value);   // + 把字串轉成數值
+        const editinput = this.refs.editInput;
+        const editTomo = this.state.editTomo;
+        this.props.saveTask(+editinput.getAttribute('data-idx'),editinput.value,editTomo);   // + 把字串轉成數值
         this.setState({isEditing:false});
     }
 }
