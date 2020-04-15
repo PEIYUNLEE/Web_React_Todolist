@@ -1,7 +1,9 @@
+import * as types from '../constants/ActionTypes';
+
 //預設show all
-export function filter(state = 'SHOW_ALL', action) {
+export default function filter(state = 'SHOW_ALL', action) {
     switch (action.type) {
-      case 'SET_FILTER':
+      case types.SET_FILTER:
         return action.filter;
       default:
         return state;

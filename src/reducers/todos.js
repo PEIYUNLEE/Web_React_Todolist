@@ -1,12 +1,12 @@
 import * as types from '../constants/ActionTypes';
 
-export function todos(state = [], action) {
+export default function todos(state = [], action) {
     switch (action.type) {
         case types.ADD_TASK:
             return [
                 ...state,
                 {
-                    task,
+                    task: action.task,
                     isCompleted: false
                 }
             ];
