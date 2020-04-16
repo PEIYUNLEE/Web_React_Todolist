@@ -8,13 +8,14 @@ class TodoAdd extends Component {
             estimateTomo:0,
         }
         this.onAddClick = this.onAddClick.bind(this);
+        this.setEstimateTomo = this.setEstimateTomo.bind(this);
     }
 
     render() {
         return (
             <div>
                 <input type="text" ref="addInput"/>
-                <TomoList/>
+                <TomoList estimateTomo={this.state.estimateTomo} setEstimateTomo={this.setEstimateTomo}/>
                 <button onClick={this.onAddClick}>ADD TASK</button>
             </div>
         );
@@ -24,6 +25,15 @@ class TodoAdd extends Component {
         const addInput = this.refs.addInput;
         this.props.addTask(addInput.value, this.state.estimateTomo);
         addInput.value='';
+        this.setState({
+            estimateTomo:0
+        })
+    }
+
+    setEstimateTomo(number){
+        this.setState({
+            estimateTomo:number
+        })
     }
 }
 

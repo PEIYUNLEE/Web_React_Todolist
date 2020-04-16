@@ -6,7 +6,6 @@ class TodoItem extends Component {
 
         this.state = {
             isEditing:false,
-            editTomo:0
         }
 
         this.onEditClick = this.onEditClick.bind(this);
@@ -15,10 +14,8 @@ class TodoItem extends Component {
     }
 
     render() {
-        const {todo,estimateTomo} = this.props;
+        const {todo} = this.props;
         const idx = this.props.index;
-        const {deleteTask,completeTask} = this.props;
-
 
         if(this.state.isEditing){
             return (
@@ -35,6 +32,7 @@ class TodoItem extends Component {
         return (
             <tr>
                 <td>{todo.task}</td>
+                <td>{todo.estimateTomo}</td>
                 <td>
                     <button onClick={this.onEditClick}>Edit</button>
                 </td>

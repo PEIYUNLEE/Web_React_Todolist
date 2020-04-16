@@ -14,6 +14,7 @@ class TodoList extends Component {
         <thead>
           <tr>
             <th>Todo</th>
+            <th>Tomo</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -25,23 +26,21 @@ class TodoList extends Component {
   renderItems() {
     const todos = this.props.todos;
     const {saveTask} = this.props;
-    // const { saveTask, deleteTask, completeTask } = this.props;
 
     let list = [];
-    todos.forEach((todo, idx,estimateTomo) => {
+    todos.forEach((todo, idx) => {
       list.push(
         <TodoItem
           key={idx}
           idx={idx}
           todo={todo}
-          estimateTomo={estimateTomo}
           saveTask={saveTask}
         />
       );
-      
-      // deleteTask={deleteTask}
-      // completeTask={completeTask}
     });
+
+    console.log(todos)
+
     return list;
   }
 }

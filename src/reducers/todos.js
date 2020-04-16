@@ -7,7 +7,8 @@ export default function todos(state = [], action) {
                 ...state,
                 {
                     task: action.task,
-                    isCompleted: false
+                    isCompleted: false,
+                    estimateTomo: action.estimateTomo
                 }
             ];
             break;

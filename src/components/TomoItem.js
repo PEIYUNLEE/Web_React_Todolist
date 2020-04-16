@@ -6,13 +6,13 @@ class TomoItem extends Component {
     }
 
     render() {
-        const {estimateTomo,number} = this.props;
+        const {estimateTomo,number,setEstimateTomo} = this.props;
         if(estimateTomo>=number){
             return (
-                <button id={"tomo"+number} onClick={()=>{this.props.tomoChecked(number);}}>{"tomo"+number+"selected"}</button>
+                <button id={"tomo"+number} onClick={()=>{setEstimateTomo(number);}}>{"tomo"+number+"selected"}</button>
                 // <label>
                 //     {"tomo"+number}
-                //     <input type="checkbox" id={"tomo"+number} value={number} checked="checked" onChange={()=>{this.props.tomoChecked(number);}}/>
+                //     <input type="checkbox" id={"tomo"+number} value={number} checked="checked" onChange={()=>{setEstimateTomo(number);}}/>
                 // </label>
             );
         };
@@ -20,10 +20,10 @@ class TomoItem extends Component {
         return (
             // <label>
             //     {"tomo"+number}
-            //     <input type="checkbox" id={"tomo"+number} value={number} onChange={()=>{this.props.tomoChecked(number);}}/>
+            //     <input type="checkbox" id={"tomo"+number} value={number} onChange={()=>{setEstimateTomo(number);}}/>
             // </label>
             
-            <button id={"tomo"+number} onClick={()=>{this.props.tomoChecked(number);}}>{"tomo"+number}</button>
+            <button id={"tomo"+number} onClick={()=>{setEstimateTomo(number);}}>{"tomo"+number}</button>
         );
     }
 
