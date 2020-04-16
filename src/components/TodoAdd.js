@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TomoList from './TomoList';
 
 class TodoAdd extends Component {
     constructor(props){
@@ -13,6 +14,7 @@ class TodoAdd extends Component {
         return (
             <div>
                 <input type="text" ref="addInput"/>
+                <TomoList/>
                 <button onClick={this.onAddClick}>ADD TASK</button>
             </div>
         );
