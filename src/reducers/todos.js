@@ -1,28 +1,39 @@
-import * as types from '../constants/ActionTypes';
+import * as types from "../constants/ActionTypes";
 
 export default function todos(state = [], action) {
-    switch (action.type) {
-        case types.ADD_TASK:
-            return [
-                ...state,
-                {
-                    task: action.task,
-                    isCompleted: false,
-                    estimateTomo: action.estimateTomo
-                }
-            ];
-            break;
-        case types.EDIT_TASK:
-            return [
-                ...state.slice(0, action.idx),
-                Object.assign({}, state[action.idx], {
-                    task: action.task
-                }),
-                ...state.slice(action.idx + 1)
-            ];
-            break;
-        default:
-            return state;
-            break;
-    }
+  switch (action.type) {
+    case types.ADD_TASK:
+      return [
+        ...state,
+        {
+          task: action.task,
+          isCompleted: false,
+          estimateTomo: action.estimateTomo,
+          isArchive: false
+        },
+      ];
+      break;
+    case types.EDIT_TASK:
+      return [
+        ...state.slice(0, action.idx),
+        Object.assign({}, state[action.idx], {
+          task: action.task,
+          estimateTomo: action.estimateTomo,
+        }),
+        ...state.slice(action.idx + 1),
+      ];
+      break;
+    case types.ARCHIVE_TASK:
+      return [
+        ...state.slice(0, action.idx),
+        Object.assign({}, state[action.idx], {
+          isArchive: true,
+        }),
+        ...state.slice(action.idx + 1),
+      ];
+      break;
+    default:
+      return state;
+      break;
+  }
 }

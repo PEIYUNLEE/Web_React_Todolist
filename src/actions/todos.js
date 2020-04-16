@@ -21,6 +21,6 @@ export function editTask(idx, task,estimateTomo){
 export function archiveTask(idx){
     return {
         type: types.ARCHIVE_TASK,
-        idx
+        idx,
     };
 }

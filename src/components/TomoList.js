@@ -5,43 +5,44 @@ import TomoItem from "./TomoItem";
 class TomoList extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   estimateTomo: 0,
-    // };
-    // this.tomoChecked = this.tomoChecked.bind(this);
+    this.state = {
+      estimateTomo:props.estimateTomo
+    };
+
+    this.setEstimateTomo = this.setEstimateTomo.bind(this);
   }
 
   render() {
     const { estimateTomo } = this.props;
-    const setEstimateTomo = this.props.setEstimateTomo;
+    // const setEstimateTomo = this.props.setEstimateTomo;
     return (
       <div>
         <TomoItem
           number="1"
           estimateTomo={estimateTomo}
-          setEstimateTomo={setEstimateTomo}
+          setEstimateTomo={this.setEstimateTomo}
         />
         <TomoItem
           number="2"
           estimateTomo={estimateTomo}
-          setEstimateTomo={setEstimateTomo}
+          setEstimateTomo={this.setEstimateTomo}
         />
         <TomoItem
           number="3"
           estimateTomo={estimateTomo}
-          setEstimateTomo={setEstimateTomo}
+          setEstimateTomo={this.setEstimateTomo}
         />
-        <div>{"tomo：" + estimateTomo}</div>
       </div>
     );
   }
 
-//   tomoChecked(number) {
-//     //   this.setState({
-//     //     estimateTomo: number,
-//     //   });
-//     this.props.setEstimateTomo(number);
-//   }
+  setEstimateTomo(number){
+    this.props.setEstimateTomo(number)
+    this.setState({
+      estimateTomo:number
+    })
+  }
+
 }
 
 export default TomoList;

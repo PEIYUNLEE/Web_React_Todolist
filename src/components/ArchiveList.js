@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import TodoItem from "./TodoItem";
+import ArchiveItem from './ArchiveItem'
 
-class TodoList extends Component {
-  constructor(props) {
+class ArchiveList extends Component {
+  constructor(props){
     super(props);
-
     this.renderItems = this.renderItems.bind(this);
   }
 
@@ -12,9 +11,7 @@ class TodoList extends Component {
     return (
       <table>
         <thead>
-          <tr>
-            <th>TodoList</th>
-          </tr>
+          <tr><th>ArchiveList</th></tr>
           <tr>
             <th>Todo</th>
             <th>Tomo</th>
@@ -28,13 +25,13 @@ class TodoList extends Component {
 
   renderItems() {
     const todos = this.props.todos;
-    const { saveTask, archiveTask } = this.props;
+    const {saveTask,archiveTask} = this.props;
 
     let list = [];
     todos.forEach((todo, idx) => {
-      if (!todo.isArchive) {
+      if(todo.isArchive){
         list.push(
-          <TodoItem
+          <ArchiveItem
             key={idx}
             idx={idx}
             todo={todo}
@@ -44,10 +41,8 @@ class TodoList extends Component {
         );
       }
     });
-
-    console.log(list)
     return list;
   }
 }
 
-export default TodoList;
+export default ArchiveList;
