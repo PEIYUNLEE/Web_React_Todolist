@@ -9,14 +9,14 @@ class TaskList extends Component {
   }
 
   render() {
-    const todos = this.props.todos;
-    const {saveTask,archiveTask} = this.props;
+    const {todos} = this.props;
+    const { saveTask, archiveTask, unarchiveTask, completeTask,redoTask } = this.props;
     return (
-        <div>
-            <TodoList todos={todos} saveTask={saveTask} archiveTask={archiveTask}/>
-            <DoneList todos={todos}/>
-            <ArchiveList todos={todos}/>
-        </div>
+      <div>
+        <TodoList todos={todos} saveTask={saveTask} archiveTask={archiveTask} completeTask={completeTask}/>
+        <DoneList todos={todos} archiveTask={archiveTask} redoTask={redoTask}/>
+        <ArchiveList todos={todos} unarchiveTask={unarchiveTask} />
+      </div>
     );
   }
 }

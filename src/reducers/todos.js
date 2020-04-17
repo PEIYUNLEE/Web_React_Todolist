@@ -9,7 +9,7 @@ export default function todos(state = [], action) {
           task: action.task,
           isCompleted: false,
           estimateTomo: action.estimateTomo,
-          isArchive: false
+          isArchived: false,
         },
       ];
       break;
@@ -23,11 +23,37 @@ export default function todos(state = [], action) {
         ...state.slice(action.idx + 1),
       ];
       break;
+    case types.COMPLETE_TASK:
+      return [
+        ...state.slice(0, action.idx),
+        Object.assign({}, state[action.idx], {
+          isCompleted: true,
+        }),
+        ...state.slice(action.idx + 1),
+      ];
+    case types.REDO_TASK:
+      return [
+        ...state.slice(0, action.idx),
+        Object.assign({}, state[action.idx], {
+          isCompleted: false,
+        }),
+        ...state.slice(action.idx + 1),
+      ];
+      break;
     case types.ARCHIVE_TASK:
       return [
         ...state.slice(0, action.idx),
         Object.assign({}, state[action.idx], {
-          isArchive: true,
+          isArchived: true,
+        }),
+        ...state.slice(action.idx + 1),
+      ];
+      break;
+    case types.UNARCHIVE_TASK:
+      return [
+        ...state.slice(0, action.idx),
+        Object.assign({}, state[action.idx], {
+          isArchived: false,
         }),
         ...state.slice(action.idx + 1),
       ];

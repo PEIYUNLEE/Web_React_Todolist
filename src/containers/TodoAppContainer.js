@@ -12,8 +12,15 @@ class App extends Component {
     return (
       <div>
         <h1>TASK LISTS</h1>
-        <TodoAdd addTask={todosActions.addTask}/>
-        <TaskList todos={todos} saveTask={todosActions.editTask} archiveTask={todosActions.archiveTask}/>
+        <TodoAdd addTask={todosActions.addTask} />
+        <TaskList
+          todos={todos}
+          saveTask={todosActions.editTask}
+          archiveTask={todosActions.archiveTask}
+          unarchiveTask={todosActions.unarchiveTask}
+          completeTask={todosActions.completeTask}
+          redoTask={todosActions.redoTask}
+        />
       </div>
     );
   }

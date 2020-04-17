@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 
-class ArchiveItem extends Component {
+class DoneItem extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const { idx,todo,unarchiveTask } = this.props;
+    const { idx,todo,archiveTask,redoTask } = this.props;
 
     return (
       <tr>
@@ -14,11 +14,12 @@ class ArchiveItem extends Component {
         <td>{todo.estimateTomo}</td>
         <td>{todo.isCompleted+''}</td>
         <td>
-          <button onClick={()=>{unarchiveTask(idx)}}>UNARCHIVE</button>
+          <button onClick={()=>{archiveTask(idx)}}>ARCHIVE</button>
+          <button onClick={()=>{redoTask(idx)}}>REDO</button>
         </td>
       </tr>
     );
   }
 }
 
-export default ArchiveItem;
+export default DoneItem;

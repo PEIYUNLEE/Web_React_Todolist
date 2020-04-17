@@ -14,6 +14,8 @@ class TodoAdd extends Component {
     render() {
         return (
             <div>
+                <h3>ADD NEW TASK</h3>
+                <h4></h4>
                 <input type="text" ref="addInput"/>
                 <TomoList estimateTomo={this.state.estimateTomo} setEstimateTomo={this.setEstimateTomo}/>
                 <button onClick={this.onAddClick}>ADD TASK</button>
