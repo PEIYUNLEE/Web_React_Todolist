@@ -2,18 +2,26 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import styled from "styled-components";
+
 
 import * as TodosActions from "./../actions/todos";
 import TodoAdd from "./../components/TodoAdd";
 import TaskList from "./../components/TaskList";
 import Nav from "./../components/navigations/Nav";
 
+// style
+const _Wrapper = styled.div`
+  display:flex;
+`;
+
+
 class App extends Component {
   render() {
     const { todos, todosActions } = this.props;
     return (
       <BrowserRouter>
-        <div>
+        <_Wrapper>
           <Nav></Nav>
           <h1>TASK LISTS</h1>
           <Switch>
@@ -32,7 +40,7 @@ class App extends Component {
               />
             </Route>
           </Switch>
-        </div>
+        </_Wrapper>
       </BrowserRouter>
     );
   }

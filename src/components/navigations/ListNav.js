@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-
-import '../../styles/ListNavStyle'
+import { Route, Link } from "react-router-dom";
 
 class ListNav extends Component {
   render() {
