@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TomoList from './TomoList';
+import TomoList from './Tomo/TomoList';
 
 class TodoAdd extends Component {
     constructor(props){
@@ -15,8 +15,9 @@ class TodoAdd extends Component {
         return (
             <div>
                 <h3>ADD NEW TASK</h3>
-                <h4></h4>
+                <h4>TASK TITLE</h4>
                 <input type="text" ref="addInput"/>
+                <h4>ESTIMATED TOMOTO</h4>
                 <TomoList estimateTomo={this.state.estimateTomo} setEstimateTomo={this.setEstimateTomo}/>
                 <button onClick={this.onAddClick}>ADD TASK</button>
             </div>
