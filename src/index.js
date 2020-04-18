@@ -3,10 +3,10 @@ import ReactDOM from "react-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 
-import todoApp from './reducers/index';
-import TodoAppContainer from './containers/TodoAppContainer';
+import todoApp from './js/reducers/index';
+import TodoAppContainer from './js/containers/TodoAppContainer';
 
-import '../assets/css/style.css'
+import './styles/css/style.css'
 
 let store = createStore(todoApp);
 

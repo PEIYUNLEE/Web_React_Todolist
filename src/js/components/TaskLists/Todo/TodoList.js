@@ -1,5 +1,13 @@
 import React, { Component } from "react";
 import TodoItem from "./TodoItem";
+import styled from "styled-components";
+
+// // style
+// const _TrItem = styled.tr`
+//   height: 50px;
+//   cursor: pointer;
+//   width: 100%;
+// `;
 
 class TodoList extends Component {
   constructor(props) {
@@ -10,20 +18,7 @@ class TodoList extends Component {
 
   render() {
     return (
-      <div>
-        <h3>TodoList</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Todo</th>
-              <th>Tomo</th>
-              <th>Complete</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>{this._renderItems()}</tbody>
-        </table>
-      </div>
+      <div>{this._renderItems()}</div>
     );
   }
 
