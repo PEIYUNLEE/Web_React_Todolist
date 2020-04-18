@@ -2,13 +2,15 @@
   "name": "react_whattoeat",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://peiyunlee.github.io/Web_React_Todolist",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --mode development",
     "build": "webpack --mode production",
     "watch": "webpack --watch --mode development",
-    "dev": "webpack-dev-server --mode development --open"
+    "dev": "webpack-dev-server --mode development --open",
+    "deploy": "gh-pages -d dist"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +22,7 @@
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.2",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "gh-pages": "^2.2.0",
     "html-webpack-plugin": "^4.2.0",
     "image-webpack-loader": "^6.0.0",
     "postcss-import": "^12.0.1",

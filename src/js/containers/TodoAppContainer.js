@@ -27,17 +27,16 @@ class App extends Component {
   render() {
     const { todos, todosActions } = this.props;
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={ process.env.PUBLIC_URL }>
         <_Wrapper>
           <Nav></Nav>
           <_TLWrapper>
             <Switch>
               <Redirect exact from="/" to="/add" />
-              <Redirect from="/tasklist/todo/?" to="/tasklist/todo" />
-              <Route path="/add/">
+              <Route path="/add">
                 <TodoAdd addTask={todosActions.addTask} />
               </Route>
-              <Route path="/tasklist/todo/">
+              <Route path="/tasklist/todo">
                 <TaskList
                   todos={todos}
                   saveTask={todosActions.editTask}
