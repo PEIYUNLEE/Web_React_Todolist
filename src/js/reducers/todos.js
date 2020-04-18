@@ -1,7 +1,19 @@
 import * as types from "../constants/ActionTypes";
 
+
 export default function todos(state = [], action) {
   switch (action.type) {
+    case types.INITIAL_TASK:
+      return [
+        ...state,
+        {
+          task: action.task,
+          isCompleted: action.isCompleted,
+          estimateTomo: action.estimateTomo,
+          isArchived: action.isArchived,
+        },
+      ];
+      break;
     case types.ADD_TASK:
       return [
         ...state,

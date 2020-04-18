@@ -2,13 +2,6 @@ import React, { Component } from "react";
 import TodoItem from "./TodoItem";
 import styled from "styled-components";
 
-// // style
-// const _TrItem = styled.tr`
-//   height: 50px;
-//   cursor: pointer;
-//   width: 100%;
-// `;
-
 class TodoList extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +16,8 @@ class TodoList extends Component {
   }
 
   _renderItems() {
+    
+    console.log(this.props.todos)
     const todos = this.props.todos;
     const { saveTask, archiveTask, completeTask } = this.props;
 

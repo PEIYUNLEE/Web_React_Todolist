@@ -43,10 +43,10 @@ class TaskList extends Component {
       <div>
         <_H3>TASK LISTS</_H3>
         <_Line></_Line>
-        <div>
+        <BrowserRouter>
           <ListNav></ListNav>
           <Switch>
-            {/* <Redirect exact from="/" to="/todo" /> */}
+            {/* <Redirect exact from="/tasklist" to="/tasklist/todo" /> */}
             <Route path="/tasklist/todo">
               <TodoList
                 todos={todos}
@@ -55,7 +55,7 @@ class TaskList extends Component {
                 completeTask={completeTask}
               />
             </Route>
-            <Route path="/">
+            <Route exact path="/tasklist/done">
               <DoneList
                 todos={todos}
                 archiveTask={archiveTask}
@@ -66,7 +66,7 @@ class TaskList extends Component {
               <ArchiveList todos={todos} unarchiveTask={unarchiveTask} />
             </Route>
           </Switch>
-        </div>
+          </BrowserRouter>
       </div>
     );
   }

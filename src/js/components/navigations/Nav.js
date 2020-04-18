@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 import add_red from "../../../assets/icons/add_red.png";
@@ -33,24 +33,24 @@ class Nav extends Component {
       <_Nav>
         <ul>
           <li>
-            <Link
+            <NavLink
               to="/add"
               onClick={() => {
                 this.onLinkClick(0);
               }}
             >
               <_Img src={this.state.iconType[0]} />
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
+            <NavLink
               to="/tasklist/todo"
               onClick={() => {
                 this.onLinkClick(1);
               }}
             >
               <_Img src={this.state.iconType[1]} />
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </_Nav>

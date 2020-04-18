@@ -33,7 +33,7 @@ const _Input = styled.input`
   letter-spacing: 0.8px;
   font-weight: 400;
   color: #333333;
-  margin:5px 0;
+  margin: 5px 0;
 
   &:hover {
     box-shadow: 0 0 0 0.0625rem #ea5548;
@@ -47,11 +47,11 @@ const _ButtonWrapper = styled.div`
   justify-content: space-between;
 `;
 const _Button = styled.button`
-  background-color: ${props=>(props.save) ? "#ea5548" : "#606060"};
+  background-color: ${(props) => (props.save ? "#ea5548" : "#606060")};
   border-radius: 30px;
   outline: none;
   border: none;
-  width: ${props=>(props.save) ? "250px" : "100px"};
+  width: ${(props) => (props.save ? "250px" : "100px")};
   height: 40px;
   color: #fcfcfc;
   font-weight: 900;
@@ -59,7 +59,6 @@ const _Button = styled.button`
   letter-spacing: 1.4px;
   margin: 15px 0 20px;
 `;
-
 
 class EditItem extends Component {
   constructor(props) {
@@ -74,58 +73,66 @@ class EditItem extends Component {
   }
 
   render() {
-    const { todo } = this.props;
+    const { todo, archiveTask,isEditing,setIsEditing } = this.props;
     const idx = this.props.idx;
 
+    if(isEditing){
+      return (
+        <_Wrapper>
+          <_Line></_Line>
+          <_H4>TASK TITLE</_H4>
+          <_Input
+            type="text"
+            data-idx={idx}
+            defaultValue={todo.task}
+            ref="editInput"
+          />
+          <_H4>ESTIMATED TOMOTO</_H4>
+          <TomoList
+            estimateTomo={this.state.editTomo}
+            setEstimateTomo={this.setEstimateTomo}
+          />
+          {/* <div>{todo.isCompleted + ""}</div> */}
+          <_ButtonWrapper>
+            <_Button
+              onClick={() => {
+                archiveTask(idx);
+                setIsEditing();
+              }}
+            >
+              ARCHIVE
+            </_Button>
+            <_Button save onClick={this.onSaveClick}>
+              SAVE
+            </_Button>
+            {/* <button
+                  onClick={() => {
+                    this.props.completeTask(idx);
+                  }}
+                >
+                  Complete
+                </button> */}
+          </_ButtonWrapper>
+        </_Wrapper>
+      );
+    }
+
     return (
-      <_Wrapper>
-        <_Line></_Line>
-        <_H4>TASK TITLE</_H4>
-        <_Input
-          type="text"
-          data-idx={idx}
-          defaultValue={todo.task}
-          ref="editInput"
-        />
-        <_H4>ESTIMATED TOMOTO</_H4>
-        <TomoList
-          estimateTomo={this.state.editTomo}
-          setEstimateTomo={this.setEstimateTomo}
-        />
-        {/* <div>{todo.isCompleted + ""}</div> */}
-        <_ButtonWrapper>
-          <_Button
-            onClick={() => {
-              this.props.archiveTask(idx);
-              this.setState({ isEditing: false });
-            }}
-          >
-            ARCHIVE
-          </_Button>
-          <_Button save onClick={this.onSaveClick}>
-            SAVE
-          </_Button>
-          {/* <button
-                onClick={() => {
-                  this.props.completeTask(idx);
-                }}
-              >
-                Complete
-              </button> */}
-        </_ButtonWrapper>
-      </_Wrapper>
-    );
+      <div></div>
+    )
   }
 
   onSaveClick() {
     const editinput = this.refs.editInput;
     const editTomo = this.state.editTomo;
+    console.log(+editinput.getAttribute("data-idx"))
     this.props.saveTask(
       +editinput.getAttribute("data-idx"),
       editinput.value,
       editTomo
     ); // + 把字串轉成數值
-    this.setState({ isEditing: false, editTomo: 0 });
+    this.setState({ editTomo: 0 });
+    this.props.setIsEditing();
   }
   setEstimateTomo(number) {
     this.setState({

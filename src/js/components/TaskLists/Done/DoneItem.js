@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import complete from "../../../../assets/icons/complete.png";
+import complete from "../../../../assets/icons/done.png";
 import edit from "../../../../assets/icons/edit.png";
 
 // style
@@ -14,8 +14,8 @@ const _Item = styled.div`
   grid-template-columns: 40px auto 40px;
   border-top: 2px solid #333333;
 `;
-const _TomoIcon = styled.img`
-  width: 13px;
+const _DoneIcon = styled.img`
+  width: 20px;
 `;
 const _IconWrapper = styled.div`
   display: flex;
@@ -36,46 +36,106 @@ const _EditIcon = styled.img`
   width: 6px;
 `;
 
+
+// style
+const _Wrapper = styled.div`
+  background-color: #414141;
+  padding: 0 40px;
+`;
+const _Line = styled.div`
+  width: 100%;
+  height: 1px;
+  background-color: #333333;
+`;
+const _ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const _Button = styled.button`
+  background-color: ${props=>(props.redo) ? "#ea5548" : "#606060"};
+  border-radius: 30px;
+  outline: none;
+  border: none;
+  width: ${props=>(props.redo) ? "250px" : "100px"};
+  height: 40px;
+  color: #fcfcfc;
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  margin: 10px 0 15px;
+`;
+
 //style
-const editicon_active = {
-  transform: 'rotate(90deg)'
-
+const expandicon_active = {
+  transform: "rotate(90deg)",
 };
-
 
 class DoneItem extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      isExpanded: false,
+    };
+
+    this.onExpandClick = this.onExpandClick.bind(this);
   }
 
   render() {
-    const { idx,todo,archiveTask,redoTask } = this.props;
+    const { idx, todo, archiveTask ,redoTask} = this.props;
 
-    return (
-      <div>
-          <_Item onClick={this.onEditClick}>
+    if (this.state.isExpanded) {
+      return (
+        <div>
+          <_Item onClick={this.onExpandClick}>
             <_IconWrapper>
-              <_TomoIcon src={complete} alt="" />
+              <_DoneIcon src={complete} alt="" />
             </_IconWrapper>
             <_Center>
               <_TaskName>{todo.task}</_TaskName>
               <div>add</div>
             </_Center>
             <_IconWrapper>
-              <_EditIcon src={edit} alt="" style={editicon_active} />
+              <_EditIcon src={edit} alt="" style={expandicon_active} />
             </_IconWrapper>
           </_Item>
+          <_Wrapper>
+            <_Line></_Line>
+            <_ButtonWrapper>
+              <_Button onClick={()=>{archiveTask(idx)}}>
+                ARCHIVE
+              </_Button>
+              <_Button redo onClick={()=>{redoTask(idx)}}>
+                REDO
+              </_Button>
+            </_ButtonWrapper>
+          </_Wrapper>
         </div>
-      // <tr>
-      //   <td>{todo.task}</td>
-      //   <td>{todo.estimateTomo}</td>
-      //   <td>{todo.isCompleted+''}</td>
-      //   <td>
-      //     <button onClick={()=>{archiveTask(idx)}}>ARCHIVE</button>
-      //     <button onClick={()=>{redoTask(idx)}}>REDO</button>
-      //   </td>
-      // </tr>
+      );
+    }
+
+    return (
+      <div>
+        <_Item onClick={this.onExpandClick}>
+          <_IconWrapper>
+            <_DoneIcon src={complete} alt="" />
+          </_IconWrapper>
+          <_Center>
+            <_TaskName>{todo.task}</_TaskName>
+            <div>add</div>
+          </_Center>
+          <_IconWrapper>
+            <_EditIcon src={edit} alt="" />
+          </_IconWrapper>
+        </_Item>
+      </div>
     );
+  }
+
+  onExpandClick() {
+    this.setState({
+      isExpanded: !this.state.isExpanded,
+    });
   }
 }
 

@@ -40,8 +40,7 @@ const _EditIcon = styled.img`
 
 //style
 const editicon_active = {
-  transform: 'rotate(90deg)'
-
+  transform: "rotate(90deg)",
 };
 
 class TodoItem extends Component {
@@ -53,11 +52,11 @@ class TodoItem extends Component {
     };
 
     this.onEditClick = this.onEditClick.bind(this);
+    this.setIsEditing = this.setIsEditing.bind(this);
   }
 
   render() {
-    const { todo } = this.props;
-    const idx = this.props.idx;
+    const { idx, todo, saveTask, archiveTask } = this.props;
 
     if (this.state.isEditing) {
       return (
@@ -74,7 +73,14 @@ class TodoItem extends Component {
               <_EditIcon src={edit} alt="" style={editicon_active} />
             </_IconWrapper>
           </_Item>
-          <EditItem todo={todo} idx={idx}></EditItem>
+          <EditItem
+            setIsEditing={this.setIsEditing}
+            isEditing={this.state.isEditing}
+            todo={todo}
+            idx={idx}
+            saveTask={saveTask}
+            archiveTask={archiveTask}
+          ></EditItem>
         </div>
       );
     }
@@ -103,6 +109,12 @@ class TodoItem extends Component {
     this.setState({
       isEditing: !this.state.isEditing,
       editTomo: this.props.todo.estimateTomo,
+    });
+  }
+
+  setIsEditing() {
+    this.setState({
+      isEditing: !this.state.isEditing,
     });
   }
 }

@@ -9,33 +9,6 @@ import TodoAdd from "./../components/TodoAdd";
 import TaskList from "./../components/TaskList";
 import Nav from "./../components/navigations/Nav";
 
-//initial data
-const initialData = [
-  {
-    task: "task1",
-    isCompleted: false,
-    estimateTomo: 3,
-    isArchived: false,
-  },
-  {
-    task: "task2",
-    isCompleted: true,
-    estimateTomo: 0,
-    isArchived: false,
-  },
-  {
-    task: "task3",
-    isCompleted: false,
-    estimateTomo: 3,
-    isArchived: true,
-  },
-  {
-    task: "task4",
-    isCompleted: false,
-    estimateTomo: 2,
-    isArchived: false,
-  },
-];
 
 // style
 const _Wrapper = styled.div`
@@ -59,11 +32,12 @@ class App extends Component {
           <Nav></Nav>
           <_TLWrapper>
             <Switch>
-              {/* <Redirect exact from="/" to="/" /> */}
-              <Route path="/add">
+              <Redirect exact from="/" to="/add" />
+              <Redirect from="/tasklist/todo/?" to="/tasklist/todo" />
+              <Route path="/add/">
                 <TodoAdd addTask={todosActions.addTask} />
               </Route>
-              <Route path="/">
+              <Route path="/tasklist/todo/">
                 <TaskList
                   todos={todos}
                   saveTask={todosActions.editTask}
@@ -83,7 +57,6 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   const array = [
-    ...initialData,
     ...state.todos,
   ]
   return {

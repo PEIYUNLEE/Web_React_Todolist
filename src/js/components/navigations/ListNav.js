@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, NavLink } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect, NavLink,Link } from "react-router-dom";
 import styled from "styled-components";
 
 // styled-components
@@ -66,7 +66,7 @@ class ListNav extends Component {
           <_Li>
             <NavLink to="/tasklist/archive" style={s_a} activeStyle={s_a_active}>
               ARCHIVE
-            </NavLink>
+            </NavLink>  
           </_Li>
         </_Ul>
       </nav>
