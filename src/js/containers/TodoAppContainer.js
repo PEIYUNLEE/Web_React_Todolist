@@ -9,7 +9,6 @@ import TodoAdd from "./../components/TodoAdd";
 import TaskList from "./../components/TaskList";
 import Nav from "./../components/navigations/Nav";
 
-
 // style
 const _Wrapper = styled.div`
   display: flex;
@@ -18,7 +17,7 @@ const _Wrapper = styled.div`
 `;
 const _TLWrapper = styled.div`
   width: 518px;
-  background-color:#333;
+  background-color: #333;
   padding: 33px 30px;
   height: 100%;
 `;
@@ -27,12 +26,14 @@ class App extends Component {
   render() {
     const { todos, todosActions } = this.props;
     return (
-      <BrowserRouter basename={ process.env.PUBLIC_URL }>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <_Wrapper>
           <Nav></Nav>
           <_TLWrapper>
             <Switch>
-              <Redirect from="/" to="/add" />
+              <Route exact path="/">
+                <TodoAdd addTask={todosActions.addTask} />
+              </Route>
               <Route path="/add">
                 <TodoAdd addTask={todosActions.addTask} />
               </Route>
@@ -55,9 +56,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const array = [
-    ...state.todos,
-  ]
+  const array = [...state.todos];
   return {
     todos: array,
   };
