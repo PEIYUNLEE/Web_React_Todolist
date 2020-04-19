@@ -31,6 +31,7 @@ class App extends Component {
           <Nav></Nav>
           <_TLWrapper>
             <Switch>
+            <Redirect exact from="/" to="/add" />
               <Route exact path="/">
                 <TodoAdd addTask={todosActions.addTask} />
               </Route>
