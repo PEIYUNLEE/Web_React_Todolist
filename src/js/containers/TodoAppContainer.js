@@ -26,7 +26,7 @@ class App extends Component {
   render() {
     const { todos, todosActions } = this.props;
     return (
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter basename={process.env.PUBLIC_URL+"/Web_React_Todolist/"}>
         <_Wrapper>
           <Nav></Nav>
           <_TLWrapper>
