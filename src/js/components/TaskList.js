@@ -43,7 +43,7 @@ class TaskList extends Component {
       <div>
         <_H3>TASK LISTS</_H3>
         <_Line></_Line>
-        <BrowserRouter basename={ process.env.PUBLIC_URL }>
+        <BrowserRouter basename="/Web_React_Todolist/">
           <ListNav></ListNav>
           <Switch>
             {/* <Redirect exact from="/tasklist" to="/tasklist/todo" /> */}

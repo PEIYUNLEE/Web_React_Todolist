@@ -26,15 +26,15 @@ class App extends Component {
   render() {
     const { todos, todosActions } = this.props;
     return (
-      <BrowserRouter basename={process.env.PUBLIC_URL+"/Web_React_Todolist/"}>
+      <BrowserRouter basename="/Web_React_Todolist/">
         <_Wrapper>
           <Nav></Nav>
           <_TLWrapper>
             <Switch>
             <Redirect exact from="/" to="/add" />
-              <Route exact path="/">
+              {/* <Route exact path="/">
                 <TodoAdd addTask={todosActions.addTask} />
-              </Route>
+              </Route> */}
               <Route path="/add">
                 <TodoAdd addTask={todosActions.addTask} />
               </Route>
