@@ -32,6 +32,7 @@ class App extends Component {
           <_TLWrapper>
             <Switch>
             <Redirect exact from="/" to="/add" />
+            <Redirect exact from="/Web_React_Todolist/" to="/Web_React_Todolist/add" />
               {/* <Route exact path="/">
                 <TodoAdd addTask={todosActions.addTask} />
               </Route> */}
