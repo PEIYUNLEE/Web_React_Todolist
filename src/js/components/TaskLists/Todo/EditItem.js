@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import TomoList from "./../../Tomo/TomoList";
+import TomoList from "../../tomo/TomoList";
 
 // style
 const _Wrapper = styled.form`
@@ -89,6 +89,7 @@ class EditItem extends Component {
           />
           <_H4>ESTIMATED TOMOTO</_H4>
           <TomoList
+            listtype={"edit"}
             estimateTomo={this.state.editTomo}
             setEstimateTomo={this.setEstimateTomo}
           />

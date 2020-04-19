@@ -16,55 +16,65 @@ class TomoList extends Component {
 
   render() {
     const estimateTomo  = this.props.estimateTomo;
-     const {setEstimateTomo} = this.props;
+     const {setEstimateTomo,listtype} = this.props;
     return (
       <_Wrapper>
         <TomoItem
+          listtype={listtype}
           number={1}
           estimateTomo={estimateTomo}
           setEstimateTomo={setEstimateTomo}
         />
         <TomoItem
+          listtype={listtype}
           number={2}
           estimateTomo={estimateTomo}
           setEstimateTomo={setEstimateTomo}
         />
         <TomoItem
+          listtype={listtype}
           number={3}
           estimateTomo={estimateTomo}
           setEstimateTomo={setEstimateTomo}
         />
         <TomoItem
+          listtype={listtype}
           number={4}
           estimateTomo={estimateTomo}
           setEstimateTomo={setEstimateTomo}
         />
         <TomoItem
+          listtype={listtype}
           number={5}
           estimateTomo={estimateTomo}
           setEstimateTomo={setEstimateTomo}
         />
         <TomoItem
+          listtype={listtype}
           number={6}
           estimateTomo={estimateTomo}
           setEstimateTomo={setEstimateTomo}
         />
         <TomoItem
+          listtype={listtype}
           number={7}
           estimateTomo={estimateTomo}
           setEstimateTomo={setEstimateTomo}
         />
         <TomoItem
+          listtype={listtype}
           number={8}
           estimateTomo={estimateTomo}
           setEstimateTomo={setEstimateTomo}
         />
         <TomoItem
+          listtype={listtype}
           number={9}
           estimateTomo={estimateTomo}
           setEstimateTomo={setEstimateTomo}
         />
         <TomoItem
+          listtype={listtype}
           number={10}
           estimateTomo={estimateTomo}
           setEstimateTomo={setEstimateTomo}

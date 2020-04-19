@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import styled from "styled-components";
 
-import TodoList from "./TaskLists/Todo/TodoList";
-import DoneList from "./TaskLists/Done/DoneList";
-import ArchiveList from "./TaskLists/Archive/ArchiveList";
+import TodoList from "./tasklists/todo/TodoList";
+import DoneList from "./tasklists/done/DoneList";
+// import ArchiveList from "./tasklists/Archive/ArchiveList";
 import ListNav from "./navigations/ListNav";
 
 // style
@@ -34,7 +34,6 @@ class TaskList extends Component {
     const {
       saveTask,
       archiveTask,
-      unarchiveTask,
       completeTask,
       redoTask,
     } = this.props;
@@ -43,11 +42,12 @@ class TaskList extends Component {
       <div>
         <_H3>TASK LISTS</_H3>
         <_Line></_Line>
-        <BrowserRouter basename="/Web_React_Todolist/">
+        <BrowserRouter>
+        {/* basename="/Web_React_Todolist/" */}
           <ListNav></ListNav>
           <Switch>
-            {/* <Redirect exact from="/tasklist" to="/tasklist/todo" /> */}
-            <Route path="/tasklist/todo">
+            <Route path="/">
+            {/* tasklist/todo */}
               <TodoList
                 todos={todos}
                 saveTask={saveTask}
@@ -55,16 +55,16 @@ class TaskList extends Component {
                 completeTask={completeTask}
               />
             </Route>
-            <Route exact path="/tasklist/done">
+            <Route path="/tasklist/done">
               <DoneList
                 todos={todos}
                 archiveTask={archiveTask}
                 redoTask={redoTask}
               />
             </Route>
-            <Route path="/tasklist/archive">
+            {/* <Route path="/tasklist/archive">
               <ArchiveList todos={todos} unarchiveTask={unarchiveTask} />
-            </Route>
+            </Route> */}
           </Switch>
           </BrowserRouter>
       </div>

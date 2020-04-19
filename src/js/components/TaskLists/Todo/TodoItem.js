@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import EditItem from "./EditItem";
+import TomoTimerList from "../../tomo/TomoTimerList"
 
 import tomato_small_color from "../../../../assets/icons/tomato_small_color.png";
 import edit from "../../../../assets/icons/edit.png";
@@ -67,7 +68,7 @@ class TodoItem extends Component {
             </_IconWrapper>
             <_Center>
               <_TaskName>{todo.task}</_TaskName>
-              <div>add</div>
+              <TomoTimerList todo={todo} left={true}/>
             </_Center>
             <_IconWrapper>
               <_EditIcon src={edit} alt="" style={editicon_active} />
@@ -93,7 +94,7 @@ class TodoItem extends Component {
           </_IconWrapper>
           <_Center>
             <_TaskName>{todo.task}</_TaskName>
-            <div></div>
+            <TomoTimerList todo={todo}/>
           </_Center>
           {/* <td>{todo.estimateTomo}</td>
         <td>{todo.isCompleted + ""}</td> */}

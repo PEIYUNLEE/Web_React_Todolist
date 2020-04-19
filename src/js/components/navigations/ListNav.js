@@ -63,11 +63,11 @@ class ListNav extends Component {
               DONE
             </NavLink>
           </_Li>
-          <_Li>
+          {/* <_Li>
             <NavLink to="/tasklist/archive" style={s_a} activeStyle={s_a_active}>
               ARCHIVE
             </NavLink>  
-          </_Li>
+          </_Li> */}
         </_Ul>
       </nav>
     );

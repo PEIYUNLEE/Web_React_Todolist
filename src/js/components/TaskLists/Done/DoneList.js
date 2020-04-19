@@ -17,7 +17,7 @@ class DoneList extends Component {
 
     let list = [];
     todos.forEach((todo, idx) => {
-      if (todo.isCompleted && !todo.isArchived) {
+      if (todo.isCompleted) {
         list.push(
           <DoneItem
             key={idx}

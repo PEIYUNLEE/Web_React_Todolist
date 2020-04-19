@@ -6,7 +6,7 @@ import tomato_small_color from "../../../assets/icons/tomato_small_color.png";
 
 // style
 const _Tomo = styled.img`
-  width: ${props=>(props.estimateTomo == 0) ? "auto" : "20px"};
+  width: ${props=>(props.listtype == "add") ? "auto" : "20px"};
   &:hover{
     cursor: pointer;
   }
@@ -18,10 +18,10 @@ class TomoItem extends Component {
   }
 
   render() {
-    const { estimateTomo, number, setEstimateTomo } = this.props;
+    const { estimateTomo, number, setEstimateTomo,listtype } = this.props;
     if (estimateTomo >= number) {
       return (
-        <_Tomo src={tomato_small_color} estimateTomo={estimateTomo}
+        <_Tomo src={tomato_small_color} listtype={listtype}
           id={"tomo" + number}
           onClick={() => {
             setEstimateTomo(number);
@@ -31,7 +31,7 @@ class TomoItem extends Component {
     }
 
     return (
-      <_Tomo src={tomato_small_gray} estimateTomo={estimateTomo}
+      <_Tomo src={tomato_small_gray} listtype={listtype}
         id={"tomo" + number}
         onClick={() => {
           setEstimateTomo(number);

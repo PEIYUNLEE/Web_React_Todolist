@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import TomoTimerList from "../../tomo/TomoTimerList";
+
 import complete from "../../../../assets/icons/done.png";
 import edit from "../../../../assets/icons/edit.png";
 
@@ -36,7 +38,6 @@ const _EditIcon = styled.img`
   width: 6px;
 `;
 
-
 // style
 const _Wrapper = styled.div`
   background-color: #414141;
@@ -52,11 +53,11 @@ const _ButtonWrapper = styled.div`
   justify-content: space-between;
 `;
 const _Button = styled.button`
-  background-color: ${props=>(props.redo) ? "#ea5548" : "#606060"};
+  background-color: ${(props) => (props.redo ? "#ea5548" : "#606060")};
   border-radius: 30px;
   outline: none;
   border: none;
-  width: ${props=>(props.redo) ? "250px" : "100px"};
+  width: ${(props) => (props.redo ? "250px" : "100px")};
   height: 40px;
   color: #fcfcfc;
   font-weight: 900;
@@ -82,7 +83,7 @@ class DoneItem extends Component {
   }
 
   render() {
-    const { idx, todo, archiveTask ,redoTask} = this.props;
+    const { idx, todo, archiveTask, redoTask } = this.props;
 
     if (this.state.isExpanded) {
       return (
@@ -93,7 +94,7 @@ class DoneItem extends Component {
             </_IconWrapper>
             <_Center>
               <_TaskName>{todo.task}</_TaskName>
-              <div>add</div>
+              <TomoTimerList todo={todo} />
             </_Center>
             <_IconWrapper>
               <_EditIcon src={edit} alt="" style={expandicon_active} />
@@ -102,10 +103,19 @@ class DoneItem extends Component {
           <_Wrapper>
             <_Line></_Line>
             <_ButtonWrapper>
-              <_Button onClick={()=>{archiveTask(idx)}}>
+              <_Button
+                onClick={() => {
+                  archiveTask(idx);
+                }}
+              >
                 ARCHIVE
               </_Button>
-              <_Button redo onClick={()=>{redoTask(idx)}}>
+              <_Button
+                redo
+                onClick={() => {
+                  redoTask(idx);
+                }}
+              >
                 REDO
               </_Button>
             </_ButtonWrapper>
@@ -122,7 +132,7 @@ class DoneItem extends Component {
           </_IconWrapper>
           <_Center>
             <_TaskName>{todo.task}</_TaskName>
-            <div>add</div>
+            <TomoTimerList todo={todo} />
           </_Center>
           <_IconWrapper>
             <_EditIcon src={edit} alt="" />

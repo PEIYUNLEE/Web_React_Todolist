@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import TodoItem from "./TodoItem";
 import styled from "styled-components";
+
+import TodoItem from "./TodoItem";
 
 class TodoList extends Component {
   constructor(props) {
@@ -16,14 +17,12 @@ class TodoList extends Component {
   }
 
   _renderItems() {
-    
-    console.log(this.props.todos)
     const todos = this.props.todos;
     const { saveTask, archiveTask, completeTask } = this.props;
 
     let list = [];
     todos.forEach((todo, idx) => {
-      if (!todo.isArchived && !todo.isCompleted) {
+      if (!todo.isCompleted) {
         list.push(
           <TodoItem
             key={idx}

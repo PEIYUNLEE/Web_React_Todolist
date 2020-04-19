@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TomoList from "./Tomo/TomoList";
+import TomoList from "./tomo/TomoList";
 import styled from "styled-components";
 
 // style
@@ -75,6 +75,7 @@ class TodoAdd extends Component {
         <_Input type="text" ref="addInput" placeholder="My Second Task" />
         <_H4>ESTIMATED TOMOTO</_H4>
         <TomoList
+          listtype={"add"}
           estimateTomo={this.state.estimateTomo}
           setEstimateTomo={this.setEstimateTomo}
         />

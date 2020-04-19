@@ -9,7 +9,7 @@ import list_white from "../../../assets/icons/list_white.png";
 
 // style
 const _Nav = styled.nav`
-  width: 80px;
+  width: 100%;
   height: 100%;
   background-color: #333333;
   border-right: 2px solid #414141;
@@ -18,6 +18,9 @@ const _Img = styled.img`
   &:hover {
     background-color: #414141;
   }
+`;
+const _Li = styled.li`
+  list-style-type: none;
 `;
 
 class Nav extends Component {
@@ -32,7 +35,7 @@ class Nav extends Component {
     return (
       <_Nav>
         <ul>
-          <li>
+          <_Li>
             <NavLink
               to="/add"
               onClick={() => {
@@ -41,8 +44,8 @@ class Nav extends Component {
             >
               <_Img src={this.state.iconType[0]} />
             </NavLink>
-          </li>
-          <li>
+          </_Li>
+          <_Li>
             <NavLink
               to="/tasklist/todo"
               onClick={() => {
@@ -51,7 +54,7 @@ class Nav extends Component {
             >
               <_Img src={this.state.iconType[1]} />
             </NavLink>
-          </li>
+          </_Li>
         </ul>
       </_Nav>
     );

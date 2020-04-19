@@ -16,56 +16,48 @@ store.dispatch({
   task: "task1",
   isCompleted: false,
   estimateTomo: 1,
-  isArchived: false,
 });
 store.dispatch({
   type: "INITIAL_TASK",
   task: "task2",
   isCompleted: true,
   estimateTomo: 2,
-  isArchived: true,
 });
 store.dispatch({
   type: "INITIAL_TASK",
   task: "task3",
   isCompleted: true,
   estimateTomo: 3,
-  isArchived: false,
 });
 store.dispatch({
   type: "INITIAL_TASK",
   task: "task4",
   isCompleted: false,
   estimateTomo: 4,
-  isArchived: true,
 });
 store.dispatch({
   type: "INITIAL_TASK",
   task: "task5",
   isCompleted: false,
   estimateTomo: 5,
-  isArchived: true,
 });
 store.dispatch({
   type: "INITIAL_TASK",
   task: "task6",
   isCompleted: true,
   estimateTomo: 6,
-  isArchived: false,
 });
 store.dispatch({
   type: "INITIAL_TASK",
   task: "task7",
   isCompleted: false,
   estimateTomo: 7,
-  isArchived: false,
 });
 store.dispatch({
   type: "INITIAL_TASK",
   task: "task8",
   isCompleted: true,
   estimateTomo: 8,
-  isArchived: true,
 });
 
 ReactDOM.render(

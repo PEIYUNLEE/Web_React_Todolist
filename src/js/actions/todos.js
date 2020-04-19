@@ -39,10 +39,10 @@ export function archiveTask(idx){
     };
 }
 
-export function unarchiveTask(idx){
-    return {
-        type: types.UNARCHIVE_TASK,
-        idx,
-    };
-}
+// export function unarchiveTask(idx){
+//     return {
+//         type: types.UNARCHIVE_TASK,
+//         idx,
+//     };
+// }
 
