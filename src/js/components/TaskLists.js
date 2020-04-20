@@ -43,11 +43,11 @@ class TaskList extends Component {
       <div>
         <_H3>TASK LISTS</_H3>
         <_Line></_Line>
-        <BrowserRouter>
+        <BrowserRouter basename="/Web_React_Todolist/">
           {/* basename="/Web_React_Todolist/" */}
           <ListNav></ListNav>
           <Switch>
-            <Route path="/">
+            <Route path="/tasklist/todo">
               {/* tasklist/todo */}
               <TodoList
                 todos={todos}
