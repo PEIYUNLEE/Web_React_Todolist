@@ -10,7 +10,6 @@ export default function todos(state = [], action) {
           task: action.task,
           isCompleted: action.isCompleted,
           estimateTomo: action.estimateTomo,
-          // isArchived: action.isArchived,
         },
       ];
       break;

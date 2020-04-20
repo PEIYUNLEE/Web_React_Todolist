@@ -33,22 +33,23 @@ class App extends Component {
     };
 
     this.setSelectedIdx = this.setSelectedIdx.bind(this);
+    this.resetSelectedIdx = this.resetSelectedIdx.bind(this);
   }
   render() {
     const { todos, todosActions } = this.props;
     return (
-      <BrowserRouter basename="/Web_React_Todolist/">
+      <BrowserRouter>
         {/*  basename="/Web_React_Todolist/" */}
         <_Wrapper>
           <DoTask
             todo={todos[this.state.selectedIdx]}
             completeTask={todosActions.completeTask}
             idx={this.state.selectedIdx}
+            resetSelectedIdx={this.resetSelectedIdx}
           ></DoTask>
           <Nav></Nav>
           <_TLWrapper>
             <Switch>
-              <Redirect exact from="/" to="/add" />
               {/* <Redirect exact from="/" to="/add" /> */}
               <Redirect
                 exact
@@ -58,7 +59,7 @@ class App extends Component {
               <Route path="/add">
                 <TodoAdd addTask={todosActions.addTask} />
               </Route>
-              <Route path="/tasklist/todo">
+              <Route path="/">
                 {/* tasklist/todo */}
                 <TaskList
                   todos={todos}
@@ -80,6 +81,32 @@ class App extends Component {
     this.setState({
       selectedIdx: idx,
     });
+  }
+
+  resetSelectedIdx(idx) {
+    let _idx = null;
+    const todos = this.props.todos;
+    for (let i = 0; i < idx; i++) {
+      if (!todos[i].isCompleted) {
+        _idx = i;
+        this.setState({
+          selectedIdx: _idx,
+        });
+        return;
+      }
+    }
+    for (let i = idx + 1; i < todos.length; i++) {
+      if (!todos[i].isCompleted) {
+        _idx = i;
+        this.setState({
+          selectedIdx: i,
+        });
+        return;
+      }
+    }
+    if (_idx == null) {
+      console.log("_idx == null");
+    }
   }
 }
 

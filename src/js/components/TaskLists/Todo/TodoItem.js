@@ -60,9 +60,9 @@ class TodoItem extends Component {
   }
 
   render() {
-    const { idx, todo, saveTask, archiveTask } = this.props;
+    const { idx, todo, selectedIdx,saveTask, archiveTask } = this.props;
 
-    if (this.state.isEditing) {
+    if (this.state.isEditing && selectedIdx == idx) {
       return (
         <div>
           <_Item
@@ -71,7 +71,7 @@ class TodoItem extends Component {
             }}
           >
             <_IconWrapper>
-              {this._renderTomoIcon(idx)}
+              {this._renderTomoIcon()}
             </_IconWrapper>
             <_Center>
               <_TaskName>{todo.task}</_TaskName>
@@ -101,7 +101,7 @@ class TodoItem extends Component {
           }}
         >
           <_IconWrapper>
-            {this._renderTomoIcon(idx)}
+            {this._renderTomoIcon()}
           </_IconWrapper>
           <_Center>
             <_TaskName>{todo.task}</_TaskName>
@@ -129,13 +129,10 @@ class TodoItem extends Component {
     });
   }
 
-  _renderTomoIcon(idx) {
-    if (this.props.selectedIdx == idx) {
+  _renderTomoIcon() {
+    if (this.props.selectedIdx == this.props.idx) {
       return <_TomoIcon src={tomato_small_color} alt="" />;
     } else {
-      if(this.state.isEditing){
-        this.setIsEditing()
-      }
       return <_TomoIcon Invisible src={tomato_small_color} alt="" />;
     }
   }

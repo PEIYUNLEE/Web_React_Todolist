@@ -1,6 +1,15 @@
 import * as types from '../constants/ActionTypes';
 
 // action creator
+// export function initialTask(task,estimateTomo,isCompleted){
+//     return {
+//         type: types.INITIAL_TASK,
+//         task,
+//         estimateTomo,
+//         isCompleted
+//     };
+// }
+
 export function addTask(task,estimateTomo){
     return {
         type: types.ADD_TASK,

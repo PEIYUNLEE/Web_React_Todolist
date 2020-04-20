@@ -54,6 +54,7 @@ const _Button = styled.button`
   font-size: 14px;
   letter-spacing: 1.4px;
   margin-top: 50px;
+  cursor: pointer;
 `;
 
 class TodoAdd extends Component {

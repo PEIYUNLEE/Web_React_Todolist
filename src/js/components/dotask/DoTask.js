@@ -13,12 +13,13 @@ const _Wrapper = styled.div`
   background-color: #eaeaea;
   width: 100%;
   height: 100%;
-  padding-top: 100px;
+  padding-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 const _H2 = styled.h2`
+  font-size: 28px;
   color: #333333;
   text-align: center;
 `;
@@ -96,7 +97,7 @@ const _TimerBtnWrapper = styled.div`
 
 class DoTask extends Component {
   render() {
-    const { todo,idx } = this.props;
+    const { todo, idx, completeTask,resetSelectedIdx } = this.props;
     return (
       <_Wrapper>
         <div>
@@ -145,7 +146,8 @@ class DoTask extends Component {
         <_Bottom>
           <_CompleteBtn
             onClick={() => {
-              this.props.completeTask(idx);
+              completeTask(idx);
+              resetSelectedIdx(idx); //此時idx已經往前更新
             }}
           >
             <img src={completeIcon} alt="" />

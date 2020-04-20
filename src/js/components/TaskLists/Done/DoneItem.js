@@ -94,7 +94,7 @@ class DoneItem extends Component {
             </_IconWrapper>
             <_Center>
               <_TaskName>{todo.task}</_TaskName>
-              <TomoTimerList todo={todo} />
+              <TomoTimerList todo={todo} left={true}/>
             </_Center>
             <_IconWrapper>
               <_EditIcon src={edit} alt="" style={expandicon_active} />
@@ -132,7 +132,7 @@ class DoneItem extends Component {
           </_IconWrapper>
           <_Center>
             <_TaskName>{todo.task}</_TaskName>
-            <TomoTimerList todo={todo} />
+            <TomoTimerList todo={todo} left={true}/>
           </_Center>
           <_IconWrapper>
             <_EditIcon src={edit} alt="" />
