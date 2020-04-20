@@ -30,12 +30,13 @@ class TaskList extends Component {
   }
 
   render() {
-    const { todos } = this.props;
+    const { todos, selectedIdx } = this.props;
     const {
       saveTask,
       archiveTask,
       completeTask,
       redoTask,
+      setSelectedIdx,
     } = this.props;
 
     return (
@@ -43,16 +44,17 @@ class TaskList extends Component {
         <_H3>TASK LISTS</_H3>
         <_Line></_Line>
         <BrowserRouter>
-        {/* basename="/Web_React_Todolist/" */}
+          {/* basename="/Web_React_Todolist/" */}
           <ListNav></ListNav>
           <Switch>
             <Route path="/">
-            {/* tasklist/todo */}
+              {/* tasklist/todo */}
               <TodoList
                 todos={todos}
                 saveTask={saveTask}
                 archiveTask={archiveTask}
-                completeTask={completeTask}
+                setSelectedIdx={setSelectedIdx}
+                selectedIdx={selectedIdx}
               />
             </Route>
             <Route path="/tasklist/done">
@@ -66,7 +68,7 @@ class TaskList extends Component {
               <ArchiveList todos={todos} unarchiveTask={unarchiveTask} />
             </Route> */}
           </Switch>
-          </BrowserRouter>
+        </BrowserRouter>
       </div>
     );
   }

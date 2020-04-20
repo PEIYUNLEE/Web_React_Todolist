@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import EditItem from "./EditItem";
-import TomoTimerList from "../../tomo/TomoTimerList"
+import TomoTimerList from "../../tomo/TomoTimerList";
 
 import tomato_small_color from "../../../../assets/icons/tomato_small_color.png";
 import edit from "../../../../assets/icons/edit.png";
@@ -19,6 +19,8 @@ const _Item = styled.div`
 `;
 const _TomoIcon = styled.img`
   width: 13px;
+  visibility: ${(props) => (props.Invisible ? "hidden" : "visible")};
+  transition:none;
 `;
 const _IconWrapper = styled.div`
   display: flex;
@@ -54,6 +56,7 @@ class TodoItem extends Component {
 
     this.onEditClick = this.onEditClick.bind(this);
     this.setIsEditing = this.setIsEditing.bind(this);
+    this._renderTomoIcon = this._renderTomoIcon.bind(this);
   }
 
   render() {
@@ -62,13 +65,17 @@ class TodoItem extends Component {
     if (this.state.isEditing) {
       return (
         <div>
-          <_Item onClick={this.onEditClick}>
+          <_Item
+            onClick={() => {
+              this.onEditClick(idx);
+            }}
+          >
             <_IconWrapper>
-              <_TomoIcon src={tomato_small_color} alt="" />
+              {this._renderTomoIcon(idx)}
             </_IconWrapper>
             <_Center>
               <_TaskName>{todo.task}</_TaskName>
-              <TomoTimerList todo={todo} left={true}/>
+              <TomoTimerList todo={todo} left={true} />
             </_Center>
             <_IconWrapper>
               <_EditIcon src={edit} alt="" style={editicon_active} />
@@ -88,16 +95,18 @@ class TodoItem extends Component {
 
     return (
       <div>
-        <_Item onClick={this.onEditClick}>
+        <_Item
+          onClick={() => {
+            this.onEditClick(idx);
+          }}
+        >
           <_IconWrapper>
-            <_TomoIcon src={tomato_small_color} alt="" />
+            {this._renderTomoIcon(idx)}
           </_IconWrapper>
           <_Center>
             <_TaskName>{todo.task}</_TaskName>
-            <TomoTimerList todo={todo}/>
+            <TomoTimerList todo={todo} left={true} />
           </_Center>
-          {/* <td>{todo.estimateTomo}</td>
-        <td>{todo.isCompleted + ""}</td> */}
           <_IconWrapper>
             <_EditIcon src={edit} alt="" />
           </_IconWrapper>
@@ -106,17 +115,29 @@ class TodoItem extends Component {
     );
   }
 
-  onEditClick() {
+  onEditClick(idx) {
     this.setState({
       isEditing: !this.state.isEditing,
       editTomo: this.props.todo.estimateTomo,
     });
+    this.props.setSelectedIdx(idx);
   }
 
   setIsEditing() {
     this.setState({
       isEditing: !this.state.isEditing,
     });
+  }
+
+  _renderTomoIcon(idx) {
+    if (this.props.selectedIdx == idx) {
+      return <_TomoIcon src={tomato_small_color} alt="" />;
+    } else {
+      if(this.state.isEditing){
+        this.setIsEditing()
+      }
+      return <_TomoIcon Invisible src={tomato_small_color} alt="" />;
+    }
   }
 }
 

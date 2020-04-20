@@ -10,8 +10,7 @@ import TaskList from "../components/TaskLists";
 import Nav from "./../components/navigations/Nav";
 import DoTask from "./../components/dotask/DoTask";
 
-
-  // min-height: 850px;
+// min-height: 850px;
 // style
 const _Wrapper = styled.div`
   display: grid;
@@ -26,29 +25,47 @@ const _TLWrapper = styled.div`
 `;
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedIdx: 0,
+    };
+
+    this.setSelectedIdx = this.setSelectedIdx.bind(this);
+  }
   render() {
     const { todos, todosActions } = this.props;
     return (
       <BrowserRouter>
-      {/*  basename="/Web_React_Todolist/" */}
+        {/*  basename="/Web_React_Todolist/" */}
         <_Wrapper>
-          <DoTask todo={todos[0]}></DoTask>
+          <DoTask
+            todo={todos[this.state.selectedIdx]}
+            completeTask={todosActions.completeTask}
+            idx={this.state.selectedIdx}
+          ></DoTask>
           <Nav></Nav>
           <_TLWrapper>
             <Switch>
-            {/* <Redirect exact from="/" to="/add" /> */}
-            <Redirect exact from="/Web_React_Todolist/" to="/Web_React_Todolist/add" />
+              {/* <Redirect exact from="/" to="/add" /> */}
+              <Redirect
+                exact
+                from="/Web_React_Todolist/"
+                to="/Web_React_Todolist/add"
+              />
               <Route path="/add">
                 <TodoAdd addTask={todosActions.addTask} />
               </Route>
               <Route path="/">
-              {/* tasklist/todo */}
+                {/* tasklist/todo */}
                 <TaskList
                   todos={todos}
                   saveTask={todosActions.editTask}
                   archiveTask={todosActions.archiveTask}
-                  completeTask={todosActions.completeTask}
                   redoTask={todosActions.redoTask}
+                  setSelectedIdx={this.setSelectedIdx}
+                  selectedIdx={this.state.selectedIdx}
                 />
               </Route>
             </Switch>
@@ -56,6 +73,12 @@ class App extends Component {
         </_Wrapper>
       </BrowserRouter>
     );
+  }
+
+  setSelectedIdx(idx) {
+    this.setState({
+      selectedIdx: idx,
+    });
   }
 }
 

@@ -106,13 +106,6 @@ class EditItem extends Component {
             <_Button save onClick={this.onSaveClick}>
               SAVE
             </_Button>
-            {/* <button
-                  onClick={() => {
-                    this.props.completeTask(idx);
-                  }}
-                >
-                  Complete
-                </button> */}
           </_ButtonWrapper>
         </_Wrapper>
       );

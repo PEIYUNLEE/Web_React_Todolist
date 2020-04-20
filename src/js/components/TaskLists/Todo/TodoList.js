@@ -11,14 +11,12 @@ class TodoList extends Component {
   }
 
   render() {
-    return (
-      <div>{this._renderItems()}</div>
-    );
+    return <div>{this._renderItems()}</div>;
   }
 
   _renderItems() {
-    const todos = this.props.todos;
-    const { saveTask, archiveTask, completeTask } = this.props;
+    const { todos, selectedIdx } = this.props;
+    const { saveTask, archiveTask, completeTask, setSelectedIdx } = this.props;
 
     let list = [];
     todos.forEach((todo, idx) => {
@@ -31,6 +29,8 @@ class TodoList extends Component {
             saveTask={saveTask}
             archiveTask={archiveTask}
             completeTask={completeTask}
+            setSelectedIdx={setSelectedIdx}
+            selectedIdx={selectedIdx}
           />
         );
       }
