@@ -38,7 +38,7 @@ class App extends Component {
   render() {
     const { todos, todosActions } = this.props;
     return (
-      <BrowserRouter>
+      <BrowserRouter basename="/Web_React_Todolist/">
         {/*  basename="/Web_React_Todolist/" */}
         <_Wrapper>
           <DoTask
@@ -50,6 +50,7 @@ class App extends Component {
           <Nav></Nav>
           <_TLWrapper>
             <Switch>
+            <Redirect exact from="/" to="/add" />
               {/* <Redirect exact from="/" to="/add" /> */}
               <Redirect
                 exact
@@ -59,7 +60,7 @@ class App extends Component {
               <Route path="/add">
                 <TodoAdd addTask={todosActions.addTask} />
               </Route>
-              <Route path="/">
+              <Route path="/tasklist/todo">
                 {/* tasklist/todo */}
                 <TaskList
                   todos={todos}
