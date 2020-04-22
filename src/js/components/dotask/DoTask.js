@@ -96,8 +96,77 @@ const _TimerBtnWrapper = styled.div`
 `;
 
 class DoTask extends Component {
+  constructor(props) {
+    super(props);
+
+    this.timer = this.timer.bind(this);
+    this.timerPause = this.timerPause.bind(this);
+    this.timerStart = this.timerStart.bind(this);
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(() => {
+      this.timer();
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  timer() {
+    const idx = this.props.idx;
+    const todo = this.props.todo;
+    let mm = todo.timer[0];
+    let ss = todo.timer[1];
+    let text = "";
+    if (ss == 0) {
+      if (mm == 0) {
+        switch (todo.timerType) {
+          case "DO":
+            this.props.setTimerType(idx, "BREAK");
+            this.props.setTimer(idx,[5, 0, "05:00"]);
+            this.timerPause();
+            return;
+          case "BREAK":
+            this.props.setTimerType(idx, "DO");
+            this.props.setTimer(idx,[25, 0, "25:00"]);
+            this.timerPause();
+            return;
+          default:
+            console.log(todo)
+            break;
+        }
+      } else {
+        mm--;
+        ss = 59;
+      }
+    } else {
+      ss--;
+    }
+    text = this.addZero(mm) + ":" + this.addZero(ss);
+    this.props.setTimer(idx, [mm, ss, text]);
+  }
+
+  addZero(i) {
+    if (i < 10) {
+      return "0" + i;
+    }
+    return i;
+  }
+
+  timerStart() {
+    this.props.setTimerState(this.props.idx);
+    setInterval(this.timerID);
+  }
+
+  timerPause() {
+    this.props.setTimerState(this.props.idx);
+    clearInterval(this.timerID);
+  }
+
   render() {
-    const { todo, idx, completeTask,resetSelectedIdx } = this.props;
+    const { todo, idx, completeTask, resetSelectedIdx } = this.props;
     return (
       <_Wrapper>
         <div>
@@ -128,7 +197,7 @@ class DoTask extends Component {
               textAnchor="middle"
               dominantBaseline="middle"
             >
-              06:25
+              {todo.timer[2]}
             </_TEXT>
           </_SVG>
           <_TimerBtnWrapper>

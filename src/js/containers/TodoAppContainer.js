@@ -38,7 +38,7 @@ class App extends Component {
   render() {
     const { todos, todosActions } = this.props;
     return (
-      <BrowserRouter basename="/Web_React_Todolist/">
+      <BrowserRouter>
         {/*  basename="/Web_React_Todolist/" */}
         <_Wrapper>
           <DoTask
@@ -46,11 +46,13 @@ class App extends Component {
             completeTask={todosActions.completeTask}
             idx={this.state.selectedIdx}
             resetSelectedIdx={this.resetSelectedIdx}
+            setTimer={todosActions.setTimer}
+            setTimerType={todosActions.setTimerType}
+            setTimerState={todosActions.setTimerState}
           ></DoTask>
           <Nav></Nav>
           <_TLWrapper>
             <Switch>
-            <Redirect exact from="/" to="/add" />
               {/* <Redirect exact from="/" to="/add" /> */}
               <Redirect
                 exact
@@ -60,7 +62,7 @@ class App extends Component {
               <Route path="/add">
                 <TodoAdd addTask={todosActions.addTask} />
               </Route>
-              <Route path="/tasklist/todo">
+              <Route path="/">
                 {/* tasklist/todo */}
                 <TaskList
                   todos={todos}

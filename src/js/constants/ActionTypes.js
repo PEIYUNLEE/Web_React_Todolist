@@ -7,3 +7,7 @@ export const ARCHIVE_TASK = 'ARCHIVE_TASK';
 export const COMPLETE_TASK = 'COMPLETE_TASK';
 export const REDO_TASK = 'REDO_TASK';
 export const INITIAL_TASK = 'INITIAL_TASK';
+
+export const SET_TIMER = 'SET_TIMER';
+export const SET_TIMERTYPE = 'SET_TIMERTYPE';
+export const SET_TIMERSTATE = 'SET_TIMERSTATE';

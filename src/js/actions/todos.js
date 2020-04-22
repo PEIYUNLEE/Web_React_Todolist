@@ -48,6 +48,29 @@ export function archiveTask(idx){
     };
 }
 
+export function setTimer(idx,timer){
+    return {
+        type: types.SET_TIMER,
+        idx,
+        timer
+    };
+}
+
+export function setTimerType(idx,timerType){
+    return {
+        type: types.SET_TIMERTYPE,
+        idx,
+        timerType
+    };
+}
+
+export function setTimerState(idx){
+    return {
+        type: types.SET_TIMERTYPE,
+        idx,
+    };
+}
+
 // export function unarchiveTask(idx){
 //     return {
 //         type: types.UNARCHIVE_TASK,
